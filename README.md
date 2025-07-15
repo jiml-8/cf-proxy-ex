@@ -14,7 +14,7 @@
 [![Github Release](https://img.shields.io/github/v/release/1234567Yang/cf-proxy-ex)](https://github.com/1234567Yang/cf-proxy-ex/releases/latest)
 ![GitHub forks](https://img.shields.io/github/forks/1234567Yang/cf-proxy-ex)
 
-[💻 在线体验](#在线体验) &nbsp;| [⚒ 用法](#用法) &nbsp;| [🚀 快速开始](#快速开始) &nbsp;| [📈 基于原项目的改进](#基于原项目的改进) &nbsp;| [🔒 安全密码](#安全密码) &nbsp;| [📸 截图](#截图) &nbsp;| [📦 LICENSE](#license) &nbsp;| [📄 备注](#备注) &nbsp;| [👍 感谢](#感谢) &nbsp;| [⭐ Star History](#star-history)
+[💻 在线体验](#在线体验) &nbsp;| [⚒ 用法](#用法) &nbsp;| [🚀 快速开始](#快速开始) &nbsp;| [🔒 安全密码](#安全密码) &nbsp;| [📸 截图](#截图) &nbsp;| [📦 LICENSE](#license) &nbsp;| [📄 备注](#备注) &nbsp;| [👍 感谢](#感谢) &nbsp;| [⭐ Star History](#star-history)
 
 
 Cloudflare超级代理，OpenAI/ChatGPT代理，Github加速，在线代理。现在已经支持多平台部署（因为改名为worker-proxy-ex太麻烦，于是保持原名）。
@@ -33,7 +33,9 @@ https://y.demo.lhyang.org/
 https://y.demo.lhyang.org/https://duckduckgo.com/?t=h_&q=hi&ia=chat
 ### Google地图
 https://y.demo.lhyang.org/https://www.google.com/maps
-
+### Alternative website:
+https://shengtai.edu.pastapexamsdownload.space/
+Password is `maga2028`
 
 # 用法
 * 请先根据 [快速开始](#快速开始) 进行部署
@@ -52,27 +54,7 @@ https://y.demo.lhyang.org/https://www.google.com/maps
 
 自定义域名获取（可选）：
 
-> [!NOTE]  
-> 请注意，免费域名我未经实际测试，只是转发消息，并且实际上应该很难获取
-
-* 免费域名申请：https://secure.nom.za/  https://nic.eu.org/   https://nic.ua
-* 不需要申请，link域名0元免费1年：https://dynadot.com/
 * 域名购买：https://porkbun.com/  https://domain.com/<br >购买时可以按 `Ctrl + F`，搜索 `$0.` 
-
-
-# 基于原项目的改进
-* 去掉`/proxy/`，方便使用。我看到有issue说了，但是作者说想添加引导界面，这个问题我也解决了。
-* 手动处理转跳事件（3XX），防止一些相对资源加载不出来。
-* 判断欲代理的网址是否以`http`开头，如果不是就自动加上。
-* 把Header里所有有关代理网址的信息全部换成要代理的网站的信息，防止某些网站阻止代理。
-* 相对路径全部转换绝对路径，方便加载资源（如JS，CSS等）。
-* Cookie作用域修改成仅当代理那个网站时，防止Cookie太大服务器发来400 bad request，同时也防止恶意网站获取所有Cookie。
-* 把`XMLHttpRequest`和`fetch`注入返回的HTML，这样也可以提交表单数据。
-* 把一个文档监视器注入到返回的HTML，这样有新的链接也可以相对转绝对。
-* 修改`Content-Security-Policy`和`X-Frame-Options`的Header，实现可代理Duckduckgo，同时也解决了一些网站打不开的问题。
-* 在返回的时候，如果是HTML，那么添加`"Content-Type": "text/html; charset=utf-8"`，防止一些较为古老的中文网站打开出现`锟斤拷`，`烫烫烫`的问题。
-* 添加最后访问网址的Cookie，可以解决搜素引擎搜素之后出现异常的情况，如：`https://the proxy/https://www.duckduckgo.com/`会转到`https://the proxy/?q=key`。
-* 优化了一些代码。
 
 # 安全密码
 安全密码利用Cookie，在设置了密码的情况下，会先检测是否有密码Cookie以及是否正确，如果不正确那么可以设置输入密码界面，或者直接403。密码Cookie默认名称为`passwordCookieName`，设置密码可以代码里搜索`const password = "";`并替换成你的密码。
@@ -105,6 +87,7 @@ MIT License + 一些条件<br>
 * 感谢 @brightu 分享了一个非常实用的添加Cookie的方式，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/15 。
 * 感谢 @since114514 参与我的一个小实验：成功从worker.js发现了一段注释，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/31 。
 * 感谢 @fangyuan99 通知我本项目其实还可以在Deno上部署，详情请见 https://github.com/1234567Yang/cf-proxy-ex/issues/33 。
+* 感谢 @Tayasui-rainnya 提供的UI（暂未应用）
 <!--* ~~非常非常非常感谢为我未来着想的学校管理员，把好多正常网站屏蔽了，否则这个项目就不存在了。此外，非常非常非常感谢学校管理员是让这个项目存在的原因（之一），能让我写在 College App 上~~-->
 
 # Star History
